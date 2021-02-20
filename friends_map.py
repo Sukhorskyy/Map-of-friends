@@ -7,12 +7,18 @@ from geopy.geocoders import Nominatim
 
 
 def read_data(path):
+    '''
+    Return data from .json file
+    '''
     with open(path, mode='r', encoding='utf-8') as friend_file:
         data = json.load(friend_file)
     return data
 
 
 def get_frinds(data):
+    '''
+    Return DataFrame of 5 friends with their coordinates
+    '''
     data = data['users']
     friend_list = []
     for user in data:
@@ -35,6 +41,9 @@ def get_frinds(data):
 
 
 def create_map(friends):
+    '''
+    Create map using DataFrame
+    '''
     lat = friends['latitude']
     lon = friends['longitude']
     name = friends['Name']
